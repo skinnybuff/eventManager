@@ -1,12 +1,9 @@
+require "csv"
 puts "Event Manager Initialized!"
 
-lines = File.readlines "event_attendees.csv"
+contents = csv.open "event_attendees.csv", headers: true
 
-row_index = 0
-lines.each do |line|
-	row_index = row_index +1
-	next if row_index == 1
-	columns = line.split(",")
-	firstName = column[2]
-	puts firstName
+contents.each do |row|
+	name = row[2]
+	puts name
 end
