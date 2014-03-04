@@ -1,8 +1,9 @@
 require 'csv'
+require 'sunlight/congress'
 
 def clean_zipcode(zipcode)
-		zipcode.to_s.rjust(5, "0")[0..4]
-end
+		zipcode.to_s.rjust(5, "0")[0..4
+]end
 
 puts "Event Manager Initialized!"
 
@@ -13,5 +14,7 @@ contents.each do |row|
 
 	zipcode = clean_zipcode(row[:zipcode])
 
-	puts "#{name} #{zipcode}"
+	legislator = Sunlight::Congress::Legislator.by_zipcode(zipcode)
+
+	puts "#{name} #{zipcode} #{legislator}"
 end
