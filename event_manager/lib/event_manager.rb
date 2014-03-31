@@ -4,8 +4,8 @@ require 'sunlight/congress'
 Sunlight::Congress.api_key = "e179a6973728c4dd3fb1204283aaccb5"
 
 def clean_zipcode(zipcode)
-		zipcode.to_s.rjust(5, "0")[0..4
-]end
+		zipcode.to_s.rjust(5, "0")[0..4]
+end
 
 puts "Event Manager Initialized!"
 
@@ -19,10 +19,12 @@ contents.each do |row|
 	legislators = Sunlight::Congress::Legislator.by_zipcode(zipcode)
 
 
-	legislator_name = legislators.collect do |legislator|
+	legislator_names = legislators.collect do |legislator|
 		"#{legislator.first_name} #{legislator.last_name}"
 	end
 
-	puts "#{name} #{zipcode} #{legislator_name}"
+	legislators_string = legislator_names.join(", ")
+
+	puts "#{name} #{zipcode} #{legislator_string}"
 	
 end
